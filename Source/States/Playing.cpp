@@ -20,6 +20,6 @@ namespace State
 
     void Playing::draw()
     {
-
+        m_board.draw();
     }
 }

@@ -3,6 +3,8 @@
 
 #include "State.h"
 
+#include "../Game/Board.h"
+
 namespace State
 {
     class Playing : public S_Base
@@ -13,6 +15,9 @@ namespace State
             void input  ();
             void update ();
             void draw   ();
+
+        private:
+            Board m_board;
     };
 }
 

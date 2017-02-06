@@ -9,7 +9,7 @@ Game::Game()
 
 void Game::runLoop()
 {
-    while (m_isRunning)
+    //while (m_isRunning)
     {
         m_states.top()->input   ();
         m_states.top()->update  ();
