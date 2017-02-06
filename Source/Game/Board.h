@@ -4,29 +4,15 @@
 #include <vector>
 #include <string>
 
-struct Vector2
-{
-    int x = 0,
-        y = 0;
-};
+#include "Node.h"
 
-struct Node
-{
-
-
-    enum class Type
-    {
-        Normal,
-        Bomb
-    } type;
-
-    bool isDug;
-};
+class Vector2;
 
 class Board
 {
-    constexpr static int HEIGHT = 15;
-    constexpr static int WIDTH  = 15;
+    constexpr static int HEIGHT     = 15;
+    constexpr static int WIDTH      = 15;
+    constexpr static int NUM_BOMBS  = 10;
 
     public:
         Board();
@@ -34,6 +20,8 @@ class Board
         void draw();
 
     private:
+        void temp_setChar(const Vector2& location, char c);
+
         Node& getNodeAt (const Vector2& location);
 
         std::vector<Node>   m_nodes;

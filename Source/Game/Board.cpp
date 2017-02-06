@@ -2,8 +2,9 @@
 
 #include <iostream>
 
+#include "../Util/Vector2.h"
+
 Board::Board()
-:   m_nodes(WIDTH * HEIGHT)
 {
     for (int y = 0 ; y < HEIGHT ; y++)
     {
@@ -13,7 +14,18 @@ Board::Board()
         }
         m_board.append("\n");
     }
+
+    temp_setChar({2, 3}, '#');
 }
+
+void Board::temp_setChar(const Vector2& location, char c)
+{
+    int x = location.x;
+    int y = location.y;
+
+    m_board[(y * WIDTH + x) * 2 + y] = c;
+}
+
 
 void Board::draw()
 {
