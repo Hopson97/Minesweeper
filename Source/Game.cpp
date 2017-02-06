@@ -1,9 +1,11 @@
 #include "Game.h"
 
 #include "States/Playing.h"
+#include "Util/Random.h"
 
 Game::Game()
 {
+    Random::init();
     pushState(std::make_unique<State::Playing>(*this));
 }
 

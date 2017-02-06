@@ -3,8 +3,9 @@
 
 namespace Random
 {
-    int intInRange(int low, int high);
+    void init();
 
+    int intInRange(int low, int high);
 }
 
 #endif // RANDOM_H_INCLUDED

@@ -5,8 +5,7 @@
 #include <string>
 
 #include "Node.h"
-
-class Vector2;
+#include "../Util/Vector2.h"
 
 class Board
 {
@@ -20,6 +19,8 @@ class Board
         void draw();
 
     private:
+        std::vector<Vector2> getBombLocations();
+
         void temp_setChar(const Vector2& location, char c);
 
         Node& getNodeAt (const Vector2& location);
