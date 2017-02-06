@@ -10,9 +10,7 @@ namespace State
         public:
             S_Base(Game& game);
 
-            virtual void input() = 0;
-            virtual void update() = 0;
-            virtual void draw() = 0;
+            virtual void logic() = 0;
 
         protected:
             Game* m_p_game;

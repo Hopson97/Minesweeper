@@ -10,9 +10,7 @@ namespace State
         public:
             Main_Menu(Game& game);
 
-            void input  ();
-            void update ();
-            void draw   ();
+            void logic() override;
     };
 }
 

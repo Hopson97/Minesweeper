@@ -12,11 +12,12 @@ namespace State
         public:
             Playing(Game& game);
 
-            void input  ();
-            void update ();
-            void draw   ();
+            void logic() override;
 
         private:
+            void drawBoard ();
+            void getInput  ();
+
             Board m_board;
     };
 }

@@ -11,11 +11,11 @@ Game::Game()
 
 void Game::runLoop()
 {
-    //while (m_isRunning)
+    while (m_isRunning)
     {
-        m_states.top()->input   ();
-        m_states.top()->update  ();
-        m_states.top()->draw    ();
+        system("cls");//I know "system" is bad, but I cba type out the "windows" way of clearing.
+
+        m_states.top()->logic();
     }
 }
 

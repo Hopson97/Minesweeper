@@ -6,36 +6,77 @@
 #include "../Util/Vector2.h"
 Board::Board()
 {
-    auto bombLocations = getBombLocations();
+    m_bombLocations.reserve(WIDTH * HEIGHT);
 
+    getBombLocations();
 
     for (int y = 0 ; y < HEIGHT ; y++)
     {
         for (int x = 0 ; x < WIDTH ; x++)
         {
             bool bombPlaced = false;
-            for (auto& loc : bombLocations)
+            for (auto& loc : m_bombLocations)
             {
                 if (loc == Vector2{x, y})
                 {
                     bombPlaced = true;
-                    m_board.append("# ");
+                    m_nodes.emplace_back(Node::Type::Bomb);
                 }
             }
 
             if (!bombPlaced)
-                m_board.append(". ");
+            {
+
+                m_nodes.emplace_back(Node::Type::Normal);
+            }
+
+            m_board.append(". ");
         }
         m_board.append("\n");
     }
 }
 
-void Board::temp_setChar(const Vector2& location, char c)
+bool Board::bombHit() const
 {
-    int x = location.x;
-    int y = location.y;
+    return m_isBombHit;
+}
 
-    m_board[(y * WIDTH + x) * 2 + y] = c;
+void Board::dig(const Vector2& location)
+{
+    auto& node = getNodeAt(location);
+    if (!node.isDug)
+    {
+        node.isDug = true;
+        if (node.type == Node::Type::Bomb)
+        {
+            setCharAt(location, 'B');
+            m_isBombHit = true;
+        }
+        else
+        {
+            setCharAt(location, 'D');
+        }
+    }
+}
+
+void Board::flag(const Vector2& location)
+{
+    auto& node = getNodeAt(location);
+    if (!node.isDug)
+    {
+        getNodeAt(location).hasFlag = true;
+        setCharAt(location, 'F');
+    }
+}
+
+int Board::getWidth() const
+{
+    return WIDTH;
+}
+
+int Board::getHeight() const
+{
+    return HEIGHT;
 }
 
 
@@ -44,9 +85,9 @@ void Board::draw()
     std::cout << m_board << std::endl;
 }
 
-std::vector<Vector2> Board::getBombLocations()
+void Board::getBombLocations()
 {
-    std::vector<Vector2> bombLocations;
+    m_bombLocations.clear();
 
     for (int i = 0 ; i < NUM_BOMBS ; i++)
     {
@@ -55,13 +96,17 @@ std::vector<Vector2> Board::getBombLocations()
         x = Random::intInRange(0, WIDTH - 1);
         y = Random::intInRange(0, HEIGHT - 1);
 
-        bombLocations.push_back({x, y});
+        m_bombLocations.push_back({x, y});
     }
-
-    return bombLocations;
 }
 
+void Board::setCharAt(const Vector2& location, char c)
+{
+    int x = location.x;
+    int y = location.y;
 
+    m_board[(y * WIDTH + x) * 2 + y] = c;
+}
 
 Node& Board::getNodeAt(const Vector2& location)
 {

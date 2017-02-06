@@ -1,12 +1,6 @@
 #ifndef NODE_H_INCLUDED
 #define NODE_H_INCLUDED
 
-enum class Type
-{
-    Normal,
-    Bomb
-};
-
 struct Node
 {
     enum class Type

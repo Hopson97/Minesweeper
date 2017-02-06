@@ -8,17 +8,7 @@ namespace State
 
     }
 
-    void Main_Menu::input()
-    {
-
-    }
-
-    void Main_Menu::update()
-    {
-
-    }
-
-    void Main_Menu::draw()
+    void Main_Menu::logic()
     {
 
     }

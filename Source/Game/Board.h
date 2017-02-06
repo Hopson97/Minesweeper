@@ -18,15 +18,27 @@ class Board
 
         void draw();
 
+        bool bombHit    () const;
+
+        void dig        (const Vector2& location);
+        void flag       (const Vector2& location);
+
+        int getWidth    ()  const;
+        int getHeight   ()  const;
+
+
     private:
-        std::vector<Vector2> getBombLocations();
+        void getBombLocations();
 
-        void temp_setChar(const Vector2& location, char c);
-
+        void setCharAt(const Vector2& location, char c);
         Node& getNodeAt (const Vector2& location);
 
         std::vector<Node>   m_nodes;
         std::string         m_board;
+
+        std::vector<Vector2> m_bombLocations;
+
+        bool m_isBombHit = false;
 };
 
 #endif // BOARD_H_INCLUDED
