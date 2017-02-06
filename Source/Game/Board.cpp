@@ -6,10 +6,23 @@
 
 Board::Board()
 {
+    //std::unordered_map<Vector2,
+
+
     for (int y = 0 ; y < HEIGHT ; y++)
     {
         for (int x = 0 ; x < WIDTH ; x++)
         {
+
+
+
+
+
+
+
+
+
+
             m_board.append(". ");
         }
         m_board.append("\n");
