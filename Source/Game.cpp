@@ -13,7 +13,7 @@ void Game::runLoop()
 {
     while (m_isRunning)
     {
-        system("cls");//I know "system" is bad, but I cba type out the "windows" way of clearing.
+        //system("cls");//I know "system" is bad, but I cba type out the "windows" way of clearing.
 
         m_states.top()->logic();
     }
