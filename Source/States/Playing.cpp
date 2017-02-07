@@ -11,7 +11,7 @@ namespace State
 {
     Playing::Playing(Game& game)
     :   S_Base(game)
-    ,   m_board (7, 7, 15)
+    ,   m_board (8, 8, 15)
     {
         //m_board.revealBombs();
     }

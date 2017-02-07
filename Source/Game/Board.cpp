@@ -179,6 +179,10 @@ void Board::floodDugSpots(const Vector2& nodeLocation)
     node.isDug = true;
     if(!adj)
         setCharAt(nodeLocation, DUG);
+    else
+    {
+        return;
+    }
 
     if (!getNodeAt({x - 1, y}).isDug)
     {
