@@ -10,4 +10,4 @@ Simple Minesweeper game
 
 Image:
 
-[img]: http://i.imgur.com/VGs30GL.png? "Da game"
+[img]: http://i.imgur.com/VGs30GL.png?1 "Da game"
